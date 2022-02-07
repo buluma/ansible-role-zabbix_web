@@ -16,8 +16,6 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "centos-systemd"
-        tag: "7"
       - image: "debian-systemd"
         tag: "latest"
       - image: "opensuse"
@@ -35,8 +33,6 @@ testing:
   retry: 1
   parallel:
     matrix:
-      - image: "centos-systemd"
-        tag: "7"
       - image: "debian-systemd"
         tag: "latest"
       - image: "opensuse"
