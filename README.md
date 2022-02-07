@@ -71,7 +71,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
     - role: buluma.ca_certificates
     - role: buluma.zabbix_repository
     - role: buluma.core_dependencies
-    - role: robertdebock.zabbix_server
+    - role: buluma.zabbix_server
 ```
 
 
@@ -129,7 +129,7 @@ The following roles are used to prepare a system. You can prepare your system in
 |[buluma.python_pip](https://galaxy.ansible.com/buluma/python_pip)|[![Build Status GitHub](https://github.com/buluma/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-python_pip/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-python_pip/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-python_pip)|
 |[buluma.selinux](https://galaxy.ansible.com/buluma/selinux)|[![Build Status GitHub](https://github.com/buluma/ansible-role-selinux/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-selinux/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-selinux/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-selinux)|
 |[buluma.zabbix_repository](https://galaxy.ansible.com/buluma/zabbix_repository)|[![Build Status GitHub](https://github.com/buluma/ansible-role-zabbix_repository/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_repository/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-zabbix_repository/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-zabbix_repository)|
-|[robertdebock.zabbix_server](https://galaxy.ansible.com/robertdebock/zabbix_server)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-zabbix_server/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-zabbix_server/actions)|[![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-zabbix_server/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-zabbix_server)|
+|[buluma.zabbix_server](https://galaxy.ansible.com/buluma/zabbix_server)|[![Build Status GitHub](https://github.com/buluma/ansible-role-zabbix_server/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_server/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-zabbix_server/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-zabbix_server)|
 
 ## [Context](#context)
 

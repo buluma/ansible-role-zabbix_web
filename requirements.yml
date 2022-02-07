@@ -13,7 +13,7 @@ roles:
   - name: buluma.python_pip
   - name: buluma.selinux
   - name: buluma.zabbix_repository
-  - name: robertdebock.zabbix_server
+  - name: buluma.zabbix_server
 collections:
   - name: community.zabbix
   - name: ansible.posix
