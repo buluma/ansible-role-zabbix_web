@@ -1,0 +1,61 @@
+---
+#
+# Ansible managed
+#
+
+name: Ansible Molecule
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*'
+  pull_request:
+  schedule:
+    - cron: '51 22 26 * *'
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          path: "${{ github.repository }}"
+      - name: molecule
+        uses: buluma/molecule-action@v4.0.5
+        with:
+          command: lint
+  test:
+    needs:
+      - lint
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - image: "centos"
+            tag: "latest"
+          - image: "debian-systemd"
+            tag: "latest"
+          - image: "opensuse"
+            tag: "latest"
+          - image: "docker-ubuntu-systemd"
+            tag: "latest"
+          - image: "docker-ubuntu-systemd"
+            tag: "bionic"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          path: "${{ github.repository }}"
+      - name: disable apparmor for mysql
+        run: sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+      - name: parse apparmor for mysql
+        run: sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
+      - name: molecule
+        uses: buluma/molecule-action@v4.0.5
+        with:
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
