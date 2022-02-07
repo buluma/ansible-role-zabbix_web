@@ -4,7 +4,7 @@ Install and configure zabbix_web on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/buluma/ansible-role-zabbix_web/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_web/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-zabbix_web/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-zabbix_web)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/zabbix_web)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/zabbix_web)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/releases/)|
+|[![github](https://github.com/buluma/ansible-role-zabbix_web/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_web/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-zabbix_web/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-zabbix_web)|[![quality](https://img.shields.io/ansible/quality/57968)](https://galaxy.ansible.com/buluma/zabbix_web)|[![downloads](https://img.shields.io/ansible/role/d/57968)](https://galaxy.ansible.com/buluma/zabbix_web)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
