@@ -16,6 +16,8 @@ molecule:
   retry: 1
   parallel:
     matrix:
+      - image: "centos"
+        tag: "latest"
       - image: "debian-systemd"
         tag: "latest"
       - image: "opensuse"
@@ -33,6 +35,27 @@ testing:
   retry: 1
   parallel:
     matrix:
+      - image: "centos"
+        tag: "latest"
+      - image: "debian-systemd"
+        tag: "latest"
+      - image: "opensuse"
+        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "bionic"
+
+role_testing:
+  script:
+    - image=${image} tag=${tag} ansible-galaxy install buluma.zabbix_web
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "testing"
+  retry: 1
+  parallel:
+    matrix:
+      - image: "centos"
+        tag: "latest"
       - image: "debian-systemd"
         tag: "latest"
       - image: "opensuse"
@@ -45,3 +68,20 @@ testing:
 galaxy:
   script:
     - ansible-galaxy role info buluma.zabbix_web
+
+role_testing_live:
+  script:
+    - image=${image} tag=${tag} ansible-galaxy install buluma.zabbix_web
+  retry: 1
+  parallel:
+    matrix:
+      - image: "centos"
+        tag: "latest"
+      - image: "debian-systemd"
+        tag: "latest"
+      - image: "opensuse"
+        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "latest"
+      - image: "docker-ubuntu-systemd"
+        tag: "bionic"
