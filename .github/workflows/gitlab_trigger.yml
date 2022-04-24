@@ -7,6 +7,7 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+# revist badges in readme
 jobs:
   build:
     runs-on: ubuntu-latest
