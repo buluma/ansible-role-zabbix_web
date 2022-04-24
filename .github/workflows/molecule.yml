@@ -38,7 +38,7 @@ jobs:
         config:
           - image: "debian-systemd"
             tag: "latest"
-          - image: "opensuse"
+          - image: "docker-opensuse-systemd"
             tag: "latest"
           - image: "docker-ubuntu-systemd"
             tag: "latest"

@@ -1,8 +1,8 @@
-# [Security Policy](#security-policy)
+# Security Policy
 
 This software implements other software, it's not very likely that this software introduces new vulnerabilities.
 
-## [Supported Versions](#supported-versions)
+## Supported Versions
 
 The current major version is supported. For example if the current version is 3.4.1:
 
@@ -14,9 +14,9 @@ The current major version is supported. For example if the current version is 3.
 | 2.0.0   | :x:                |
 | 1.0.0   | :x:                |
 
-## [Reporting a Vulnerability](#reporting-a-vulnarability)
+## Reporting a Vulnerability
 
-Please [open an issue](https://github.com/buluma/ansible-role-zabbix_web/issues) describing the vulnerability.
+Please [open an issue](https://github.com/robertdebock/ansible-role-zabbix_web/issues) describing the vulnerability.
 
 Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or

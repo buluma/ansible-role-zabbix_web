@@ -11,14 +11,12 @@ variables:
 molecule:
   script:
     - image=${image} tag=${tag} molecule test
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
   retry: 1
   parallel:
     matrix:
       - image: "debian-systemd"
         tag: "latest"
-      - image: "opensuse"
+      - image: "docker-opensuse-systemd"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
@@ -37,26 +35,7 @@ testing:
     matrix:
       - image: "debian-systemd"
         tag: "latest"
-      - image: "opensuse"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "latest"
-      - image: "docker-ubuntu-systemd"
-        tag: "bionic"
-      - image: "docker-ubuntu-systemd"
-        tag: "focal"
-
-role_testing:
-  script:
-    - image=${image} tag=${tag} ansible-galaxy install buluma.zabbix_web
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "testing"
-  retry: 1
-  parallel:
-    matrix:
-      - image: "debian-systemd"
-        tag: "latest"
-      - image: "opensuse"
+      - image: "docker-opensuse-systemd"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
@@ -69,7 +48,7 @@ galaxy:
   script:
     - ansible-galaxy role info buluma.zabbix_web
 
-role_testing_live:
+role_testing:
   script:
     - image=${image} tag=${tag} ansible-galaxy install buluma.zabbix_web
   retry: 1
@@ -77,7 +56,7 @@ role_testing_live:
     matrix:
       - image: "debian-systemd"
         tag: "latest"
-      - image: "opensuse"
+      - image: "docker-opensuse-systemd"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
