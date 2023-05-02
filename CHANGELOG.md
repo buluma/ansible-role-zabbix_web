@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump buluma/molecule-action from 5.0.4 to 5.0.5 [\#10](https://github.com/buluma/ansible-role-zabbix_web/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump buluma/molecule-action from 4.0.7 to 5.0.4 [\#8](https://github.com/buluma/ansible-role-zabbix_web/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [1.0.10](https://github.com/buluma/ansible-role-zabbix_web/tree/1.0.10) (2022-10-07)
