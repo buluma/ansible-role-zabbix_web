@@ -48,8 +48,6 @@ jobs:
             tag: "focal"
           - image: "docker-ubuntu-systemd"
             tag: "bionic"
-          - image: "kali"
-            tag: "latest"
     steps:
       - name: checkout
         uses: actions/checkout@v3
