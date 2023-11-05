@@ -2,9 +2,9 @@
 
 Install and configure zabbix_web on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-zabbix_web/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_web/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-zabbix_web/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-zabbix_web)|[![quality](https://img.shields.io/ansible/quality/57968)](https://galaxy.ansible.com/buluma/zabbix_web)|[![downloads](https://img.shields.io/ansible/role/d/57968)](https://galaxy.ansible.com/buluma/zabbix_web)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-zabbix_web/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-zabbix_web/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-zabbix_web/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-zabbix_web)|[![downloads](https://img.shields.io/ansible/role/d/4890)](https://galaxy.ansible.com/buluma/zabbix_web)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-zabbix_web.svg)](https://github.com/buluma/ansible-role-zabbix_web/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
