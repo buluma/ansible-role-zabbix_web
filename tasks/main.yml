@@ -2,7 +2,8 @@
 # tasks file for zabbix_web
 
 - name: Import assert.yml
-  ansible.builtin.import_tasks: assert.yml
+  ansible.builtin.import_tasks:
+    file: assert.yml
   run_once: yes
   delegate_to: localhost
 
@@ -59,6 +60,7 @@
     - zabbix_web_groups is defined
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
   run_once: yes
+  no_log: yes
 
 - name: Add zabbix hosts
   community.zabbix.zabbix_host:

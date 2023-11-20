@@ -1,27 +1,30 @@
 ---
 
-- name: assert | Test if zabbix_web_database_name is set correctly
+- name: assert | Test zabbix_web_database_name
   ansible.builtin.assert:
     that:
       - zabbix_web_database_name is defined
       - zabbix_web_database_name is string
+      - zabbix_web_database_name is not none
     quiet: yes
 
-- name: assert | Test if zabbix_web_database_user is set correctly
+- name: assert | Test zabbix_web_database_user
   ansible.builtin.assert:
     that:
       - zabbix_web_database_user is defined
       - zabbix_web_database_user is string
+      - zabbix_web_database_user is not none
     quiet: yes
 
-- name: assert | Test if zabbix_web_database_pass is set correctly
+- name: assert | Test zabbix_web_database_pass
   ansible.builtin.assert:
     that:
       - zabbix_web_database_pass is defined
       - zabbix_web_database_pass is string
+      - zabbix_web_database_pass is not none
     quiet: yes
 
-- name: assert | Test if zabbix_web_mysql_connection is set correctly
+- name: assert | Test zabbix_web_mysql_connection
   ansible.builtin.assert:
     that:
       - zabbix_web_mysql_connection is defined
@@ -29,11 +32,12 @@
       - zabbix_web_mysql_connection in [ "network", "socket" ]
     quiet: yes
 
-- name: assert | Test if zabbix_web_database_host is set correctly
+- name: assert | Test zabbix_web_database_host
   ansible.builtin.assert:
     that:
       - zabbix_web_database_host is defined
       - zabbix_web_database_host is string
+      - zabbix_web_database_host is not none
     quiet: yes
   when:
     - zabbix_web_mysql_connection == "network"
