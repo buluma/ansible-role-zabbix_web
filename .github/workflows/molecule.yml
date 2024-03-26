@@ -46,16 +46,16 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "debian-systemd"
+          - image: "docker-molecule-images"
             tag: "bullseye"
-          - image: "docker-opensuse-systemd"
-            tag: "latest"
-          - image: "docker-ubuntu-systemd"
+          - image: "docker-molecule-images"
+            tag: "opensuse"
+          - image: "docker-molecule-images"
             tag: "focal"
-          - image: "docker-ubuntu-systemd"
+          - image: "docker-molecule-images"
             tag: "bionic"
-          - image: "kali"
-            tag: "latest"
+          - image: "docker-molecule-images"
+            tag: "kalilinux"
     steps:
       - name: Checkout Role
         uses: actions/checkout@v4
@@ -66,6 +66,8 @@ jobs:
         with:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
+      - name: Running Role Test
+        run: ansible-galaxy role import --api-key ${{ secrets.galaxy_api_key }} buluma ${{ github.event.repository.name }}
 
   dependabot:
     needs:
