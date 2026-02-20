@@ -4,7 +4,7 @@
 - name: Import assert.yml
   ansible.builtin.import_tasks:
     file: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Install zabbix_web
@@ -25,8 +25,8 @@
 - name: Set selinux settings for zabbix_web
   ansible.posix.seboolean:
     name: "{{ item }}"
-    state: yes
-    persistent: yes
+    state: true
+    persistent: true
   loop:
     - httpd_can_network_connect
     - httpd_can_network_connect_db
@@ -43,8 +43,7 @@
     name: zabbix-api
     state: present
   when:
-    - zabbix_web_groups is defined or
-      zabbix_web_hosts is defined
+    - zabbix_web_groups is defined or zabbix_web_hosts is defined
 
 - name: Add zabbix groups
   community.zabbix.zabbix_group:
@@ -59,8 +58,8 @@
   when:
     - zabbix_web_groups is defined
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
-  run_once: yes
-  no_log: yes
+  run_once: true
+  no_log: true
 
 - name: Add zabbix hosts
   community.zabbix.zabbix_host:
@@ -87,6 +86,6 @@
   when:
     - zabbix_web_hosts is defined
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
-  run_once: yes
+  run_once: true
   loop_control:
     label: "{{ item.name }}"
