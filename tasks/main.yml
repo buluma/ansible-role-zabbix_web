@@ -1,32 +1,27 @@
 ---
-# tasks file for zabbix_web
-
 - name: Import assert.yml
   ansible.builtin.import_tasks:
     file: assert.yml
-  run_once: true
   delegate_to: localhost
-
+  run_once: true
 - name: Install zabbix_web
   ansible.builtin.package:
     name: "{{ zabbix_web_packages }}"
     state: present
   notify:
     - Restart httpd
-
 - name: Configure zabbix_web
   ansible.builtin.template:
-    src: zabbix.conf.php.j2
     dest: "{{ zabbix_configuration_path }}/zabbix.conf.php"
     mode: "0644"
+    src: zabbix.conf.php.j2
   notify:
     - Restart httpd
-
 - name: Set selinux settings for zabbix_web
   ansible.posix.seboolean:
     name: "{{ item }}"
-    state: true
     persistent: true
+    state: true
   loop:
     - httpd_can_network_connect
     - httpd_can_network_connect_db
@@ -34,54 +29,50 @@
   when:
     - ansible_selinux.status is defined
     - ansible_selinux.status == "enabled"
-
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
-
 - name: Install zabbix-api requirements
   ansible.builtin.pip:
     name: zabbix-api
     state: present
   when:
     - zabbix_web_groups is defined or zabbix_web_hosts is defined
-
 - name: Add zabbix groups
   community.zabbix.zabbix_group:
-    http_login_user: "{{ zabbix_web_username }}"
-    http_login_password: "{{ zabbix_web_password }}"
-    state: present
     host_groups:
       - "{{ item.name }}"
+    http_login_password: "{{ zabbix_web_password }}"
+    http_login_user: "{{ zabbix_web_username }}"
+    state: present
   loop: "{{ zabbix_web_groups }}"
+  no_log: true
+  run_once: true
   when:
     - zabbix_web_groups is defined
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
-  run_once: true
-  no_log: true
-
 - name: Add zabbix hosts
   community.zabbix.zabbix_host:
-    http_login_user: "{{ zabbix_web_username }}"
-    http_login_password: "{{ zabbix_web_password }}"
-    host_name: "{{ item.name }}"
-    visible_name: "{{ item.visible_name | default(item.name) }}"
     description: "{{ item.description | default([omit]) }}"
     host_groups: "{{ item.groups }}"
-    link_templates: "{{ item.link_templates }}"
-    status: enabled
-    state: present
-    inventory_mode: automatic
+    host_name: "{{ item.name }}"
+    http_login_password: "{{ zabbix_web_password }}"
+    http_login_user: "{{ zabbix_web_username }}"
     interfaces:
-      - type: 1
-        main: 1
-        useip: 1
+      - dns: "{{ item.interface_dns | default([omit]) }}"
         ip: "{{ item.interface_ip | default([omit]) }}"
-        dns: "{{ item.interface_dns | default([omit]) }}"
+        main: 1
         port: 10050
+        type: 1
+        useip: 1
+    inventory_mode: automatic
+    link_templates: "{{ item.link_templates }}"
+    state: present
+    status: enabled
+    visible_name: "{{ item.visible_name | default(item.name) }}"
   loop: "{{ zabbix_web_hosts }}"
+  loop_control:
+    label: "{{ item.name }}"
+  run_once: true
   when:
     - zabbix_web_hosts is defined
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
-  run_once: true
-  loop_control:
-    label: "{{ item.name }}"

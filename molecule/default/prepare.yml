@@ -1,32 +1,30 @@
----
-- name: Prepare
+- become: true
+  gather_facts: false
   hosts: all
-  gather_facts: no
-  become: yes
-
+  name: Prepare
   roles:
-    - role: buluma.bootstrap
-    - role: buluma.selinux
-    - role: robertdebock.container_docs
-    - role: buluma.buildtools
-    - role: buluma.epel
-    - role: buluma.python_pip
-    - role: buluma.openssl
-      openssl_items:
-        - name: apache-httpd
-          common_name: "{{ ansible_fqdn }}"
-    - role: buluma.mysql
-      mysql_databases:
-        - name: zabbix
-          encoding: utf8
-          collation: utf8_bin
-      mysql_users:
-        - name: zabbix
-          password: zabbix
-          priv: "zabbix.*:ALL"
-    - role: buluma.php
-    - role: buluma.httpd
-    - role: buluma.ca_certificates
-    - role: buluma.zabbix_repository
-    - role: buluma.core_dependencies
-    - role: buluma.zabbix_server
+  - role: buluma.bootstrap
+  - role: buluma.selinux
+  - role: robertdebock.container_docs
+  - role: buluma.buildtools
+  - role: buluma.epel
+  - role: buluma.python_pip
+  - openssl_items:
+    - common_name: '{{ ansible_fqdn }}'
+      name: apache-httpd
+    role: buluma.openssl
+  - mysql_databases:
+    - collation: utf8_bin
+      encoding: utf8
+      name: zabbix
+    mysql_users:
+    - name: zabbix
+      password: zabbix
+      priv: zabbix.*:ALL
+    role: buluma.mysql
+  - role: buluma.php
+  - role: buluma.httpd
+  - role: buluma.ca_certificates
+  - role: buluma.zabbix_repository
+  - role: buluma.core_dependencies
+  - role: buluma.zabbix_server
