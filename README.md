@@ -11,59 +11,61 @@ Install and configure zabbix_web on your system.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-zabbix_web/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
-- become: true
-  gather_facts: true
-  hosts: all
-  name: Converge
-  roles:
-  - role: buluma.zabbix_web
-    zabbix_web_groups:
-    - name: Linux servers
-    zabbix_web_hosts:
-    - description: Example server 1 description
-      groups:
-      - Linux servers
-      interface_dns: server1.example.com
-      interface_ip: 192.168.127.127
-      link_templates:
-      - Template OS Linux by Zabbix agent
-      name: Example server 1
-      visible_name: Example server 1 name
+---
+  - become: true
+    gather_facts: true
+    hosts: all
+    name: Converge
+    roles:
+      - role: buluma.zabbix_web
+        zabbix_web_groups:
+          - name: Linux servers
+        zabbix_web_hosts:
+          - description: Example server 1 description
+            groups:
+              - Linux servers
+            interface_dns: server1.example.com
+            interface_ip: 192.168.127.127
+            link_templates:
+              - Template OS Linux by Zabbix agent
+            name: Example server 1
+            visible_name: Example server 1 name
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-zabbix_web/blob/master/molecule/default/prepare.yml):
 
 ```yaml
-- become: true
-  gather_facts: false
-  hosts: all
-  name: Prepare
-  roles:
-  - role: buluma.bootstrap
-  - role: buluma.selinux
-  - role: robertdebock.container_docs
-  - role: buluma.buildtools
-  - role: buluma.epel
-  - role: buluma.python_pip
-  - openssl_items:
-    - common_name: '{{ ansible_fqdn }}'
-      name: apache-httpd
-    role: buluma.openssl
-  - mysql_databases:
-    - collation: utf8_bin
-      encoding: utf8
-      name: zabbix
-    mysql_users:
-    - name: zabbix
-      password: zabbix
-      priv: zabbix.*:ALL
-    role: buluma.mysql
-  - role: buluma.php
-  - role: buluma.httpd
-  - role: buluma.ca_certificates
-  - role: buluma.zabbix_repository
-  - role: buluma.core_dependencies
-  - role: buluma.zabbix_server
+---
+  - become: true
+    gather_facts: false
+    hosts: all
+    name: Prepare
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.selinux
+      - role: robertdebock.container_docs
+      - role: buluma.buildtools
+      - role: buluma.epel
+      - role: buluma.python_pip
+      - openssl_items:
+          - common_name: '{{ ansible_fqdn }}'
+            name: apache-httpd
+        role: buluma.openssl
+      - mysql_databases:
+          - collation: utf8_bin
+            encoding: utf8
+            name: zabbix
+        mysql_users:
+          - name: zabbix
+            password: zabbix
+            priv: zabbix.*:ALL
+        role: buluma.mysql
+      - role: buluma.php
+      - role: buluma.httpd
+      - role: buluma.ca_certificates
+      - role: buluma.zabbix_repository
+      - role: buluma.core_dependencies
+      - role: buluma.zabbix_server
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -73,12 +75,13 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-zabbix_web/blob/master/defaults/main.yml):
 
 ```yaml
+---
 zabbix_web_database_name: zabbix
 zabbix_web_database_pass: zabbix
 zabbix_web_database_user: zabbix
 zabbix_web_mysql_connection: socket
 zabbix_web_password: zabbix
-zabbix_web_server: '{{ ansible_fqdn }}'
+zabbix_web_server: "{{ ansible_fqdn }}"
 zabbix_web_server_name: zabbix
 zabbix_web_server_port: 10051
 zabbix_web_username: Admin
