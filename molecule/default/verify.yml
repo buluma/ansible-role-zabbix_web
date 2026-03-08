@@ -4,11 +4,11 @@
   hosts: all
   name: Verify
   tasks:
-  - ansible.builtin.uri:
-      return_content: true
-      url: http://localhost/zabbix
-    failed_when:
-    - '''Zabbix SIA'' not in zabbix_web_check_web_interface.content'
-    - '''Connection refused'' in zabbix_web_check_web_interface.content'
-    name: check web interface
-    register: zabbix_web_check_web_interface
+    - ansible.builtin.uri:
+        return_content: true
+        url: http://localhost/zabbix
+      failed_when:
+        - "'Zabbix SIA' not in zabbix_web_check_web_interface.content"
+        - "'Connection refused' in zabbix_web_check_web_interface.content"
+      name: check web interface
+      register: zabbix_web_check_web_interface
