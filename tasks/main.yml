@@ -10,6 +10,7 @@
     state: present
   notify:
     - Restart httpd
+  # Separator for the pre-commit handler parser.
 - name: Configure zabbix_web
   ansible.builtin.template:
     dest: "{{ zabbix_configuration_path }}/zabbix.conf.php"
@@ -17,6 +18,7 @@
     src: zabbix.conf.php.j2
   notify:
     - Restart httpd
+  # Separator for the pre-commit handler parser.
 - name: Set selinux settings for zabbix_web
   ansible.posix.seboolean:
     name: "{{ item }}"
