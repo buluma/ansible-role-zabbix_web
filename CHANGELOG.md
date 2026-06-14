@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-zabbix_web/tree/HEAD)
+## [26.6.0](https://github.com/buluma/ansible-role-zabbix_web/tree/26.6.0) (2026-06-14)
 
-[Full Changelog](https://github.com/buluma/ansible-role-zabbix_web/compare/1.0.10...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-zabbix_web/compare/1.0.10...26.6.0)
 
 **Closed issues:**
 
@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Bump docker/setup-buildx-action from 3 to 4 [\#21](https://github.com/buluma/ansible-role-zabbix_web/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump buluma/molecule-action from 5.0.4 to 5.0.5 [\#10](https://github.com/buluma/ansible-role-zabbix_web/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump buluma/molecule-action from 4.0.7 to 5.0.4 [\#8](https://github.com/buluma/ansible-role-zabbix_web/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
 
