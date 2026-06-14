@@ -1,9 +1,8 @@
 ---
-- become: true
-  gather_facts: true
 - name: Converge
   hosts: all
-  name: Converge
+  become: true
+  gather_facts: true
   roles:
     - role: buluma.zabbix_web
       zabbix_web_groups:
