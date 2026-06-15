@@ -1,9 +1,8 @@
 ---
-- become: true
-  gather_facts: false
 - name: Verify
   hosts: all
-  name: Verify
+  become: true
+  gather_facts: false
   tasks:
     - ansible.builtin.uri:
         return_content: true
