@@ -16,4 +16,13 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Suse
+      versions:
+        - all
   role_name: zabbix_web
