@@ -4,17 +4,18 @@
 platforms:
   - name: EL
     versions:
-      - "10"
+      # Excludes 10: Zabbix's official repo signing key lacks a valid
+      # RFC4880bis subkey binding signature, which EL10's rpm-sequoia
+      # backend rejects outright with no policy override available.
       - "9"
   - name: Debian
     versions:
       - all
-  - name: Fedora
-    versions:
-      # Excludes 45: it ships Python 3.15.0b3, whose dataclasses module
-      # dropped _is_type, breaking ansible-core's AnsiballZ module wrapper.
-      - "44"
-      - "43"
+  # Fedora excluded entirely: buluma.zabbix_repository has no real repo
+  # config for "Fedora" (ansible_facts['distribution']), it only matches
+  # RedHat-clone distributions, so its dnf/yum install task silently skips
+  # here -- no zabbix repo ever gets configured, and zabbix-server/
+  # zabbix-sql-scripts packages 404.
   - name: Ubuntu
     versions:
       - all

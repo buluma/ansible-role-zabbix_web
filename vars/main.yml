@@ -1,6 +1,7 @@
 ---
 _zabbix_configuration_path:
   Ubuntu-16: /usr/share/zabbix/conf
+  Debian-11: /usr/share/zabbix/conf
   default: /etc/zabbix/web
 _zabbix_web_httpd_service:
   RedHat: httpd
@@ -10,6 +11,10 @@ _zabbix_web_mysql_socket:
   RedHat: /var/lib/mysql/mysql.sock
   default: /var/run/mysql/mysql.sock
 _zabbix_web_packages:
+  # Debian 11's zabbix repo doesn't ship zabbix-apache-conf at all (only
+  # zabbix-frontend-php); newer Debian releases' repos do.
+  Debian-11:
+    - zabbix-frontend-php
   Debian:
     - zabbix-frontend-php
     - zabbix-apache-conf
